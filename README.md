@@ -9,7 +9,7 @@ A Home Assistant add-on repository containing a patched build of
 Settings → Add-ons → Add-on Store → ⋮ → Repositories → add:
 
 ```
-https://github.com/USERNAME/ha-remoteterm-usb
+https://github.com/FinestDice17/ha-remoteterm-usb
 ```
 
 Then install **RemoteTerm for MeshCore (USB Fix)** from the new section.
