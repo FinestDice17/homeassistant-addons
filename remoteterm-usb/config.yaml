@@ -1,0 +1,61 @@
+name: "RemoteTerm for MeshCore (USB Fix)"
+version: "3.16.2"
+slug: "remoteterm_usb"
+description: "Web-based terminal and management interface for MeshCore mesh radio networks - local fork with full USB/serial auto-mapping"
+url: "https://github.com/bhaggs/ha-remoteterm-app"
+arch:
+  - amd64
+  - aarch64
+image: "ghcr.io/bhaggs/ha-remoteterm-app/remoteterm-app"
+ingress: true
+ingress_port: 8000
+ingress_stream: true
+ports:
+  8000/tcp: null
+ports_description:
+  8000/tcp: Web interface port (for external access via reverse proxy)
+panel_icon: "mdi:human-greeting-proximity"
+panel_title: "RemoteTerm USB"
+hassio_api: true
+services:
+  - mqtt:want
+bluetooth: true
+map:
+  - data:rw
+  - share:rw
+# --- USB / serial fix -------------------------------------------------------
+# Upstream hardcoded: devices: [/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyACM0, /dev/ttyACM1]
+# That static list breaks any node that enumerates above ACM1 (e.g. ttyACM4).
+# uart: true  -> Supervisor auto-maps EVERY host UART/serial device into the container
+# udev: true  -> populates /dev/serial/by-id/ symlinks so stable paths actually resolve
+uart: true
+udev: true
+# ---------------------------------------------------------------------------
+options:
+  serial_port: ""
+  serial_baudrate: 115200
+  tcp_host: ""
+  tcp_port: 5000
+  ble_address: ""
+  ble_pin: ""
+  log_level: "INFO"
+  disable_bots: false
+  basic_auth_username: ""
+  basic_auth_password: ""
+  enable_message_poll_fallback: false
+  force_channel_slot_reconfigure: false
+  skip_post_connect_sync: false
+schema:
+  serial_port: str?
+  serial_baudrate: int
+  tcp_host: str?
+  tcp_port: int
+  ble_address: str?
+  ble_pin: str?
+  log_level: list(DEBUG|INFO|WARNING|ERROR)
+  disable_bots: bool
+  basic_auth_username: str?
+  basic_auth_password: str?
+  enable_message_poll_fallback: bool
+  force_channel_slot_reconfigure: bool
+  skip_post_connect_sync: bool
