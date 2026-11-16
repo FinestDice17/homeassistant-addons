@@ -78,11 +78,11 @@ Fall back to building locally on the Pi:
 3. Reinstall
 
 `run.sh` is included and unmodified for that path. The build pulls
-`docker.io/jkingsman/remoteterm-meshcore` and takes a few minutes on the Pi 5.
+`ghcr.io/statico/remoteterm-meshcore` and takes a few minutes on the Pi 5.
 
 ## Keeping up with upstream
 
 When bhaggs releases a new version, bump `version:` in `config.yaml` to match and reinstall.
-If upstream ever adds `uart: true` themselves, drop this fork and go back to the store copy.
-Worth opening an issue on `bhaggs/ha-remoteterm-app` — the static four-device map is a real
-bug that hits anyone with more than a couple of serial devices.
+Upstream has since added `uart: true`; the only thing this fork still adds is `udev: true`
+(populates `/dev/serial/by-id/`). If upstream adds that too, drop this fork and go back to the
+store copy. Updates to 3.26.8 or later migrate the database one-way, so take a backup first.

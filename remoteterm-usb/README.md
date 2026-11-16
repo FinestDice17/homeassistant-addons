@@ -58,13 +58,18 @@ instances will fight over the same serial port.
   upstream, so there's no local build step.
 - To build on-device instead: rename `Dockerfile.build-fallback` → `Dockerfile` and remove
   the `image:` line from `config.yaml`. `run.sh` is included unmodified.
-- Tracks upstream v3.16.2 (commit `52b8f5c`). Bump `version:` in `config.yaml` to follow new
+- Tracks bhaggs/ha-remoteterm-app v3.26.9, which packages the
+  [statico/remoteterm-meshcore](https://github.com/statico/remoteterm-meshcore) fork (the original
+  jkingsman project is paused after 3.17.1). Bump `version:` in `config.yaml` to follow new
   releases.
+- Upstream now ships `uart: true` itself. The only remaining difference from the store add-on
+  is `udev: true` (needed for `/dev/serial/by-id/` paths) plus the separate slug/name.
+- Updating to 3.26.8+ runs a one-way database migration. Take an HA backup of this add-on first.
 - See [`INSTALL.md`](INSTALL.md) for the full walkthrough and [`DOCS.md`](DOCS.md) for
   add-on usage/options.
 
 ## Credit
 
 All application code is Bryan Haggerty's — this add-on changes packaging metadata only.
-MIT, same as upstream. If upstream adopts `uart: true`, this fork should be retired in
+MIT, same as upstream. If upstream adopts `udev: true` (it already has `uart: true`), this fork should be retired in
 favour of the store version.

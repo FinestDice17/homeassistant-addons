@@ -1,5 +1,5 @@
 name: "RemoteTerm for MeshCore (USB Fix)"
-version: "3.16.2"
+version: "3.26.9"
 slug: "remoteterm_usb"
 description: "Web-based terminal and management interface for MeshCore mesh radio networks - local fork with full USB/serial auto-mapping"
 url: "https://github.com/bhaggs/ha-remoteterm-app"

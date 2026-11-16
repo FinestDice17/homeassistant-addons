@@ -17,7 +17,7 @@ Both add-ons below will appear under **HAOS ADD-ON's** in the store.
 
 | Add-on | Slug | What it does |
 |--------|------|---------------|
-| [RemoteTerm for MeshCore (USB Fix)](remoteterm-usb/) | `remoteterm_usb` | Packaging-only fork of [bhaggs/ha-remoteterm-app](https://github.com/bhaggs/ha-remoteterm-app) with `uart: true` / `udev: true` so it can see any USB serial device, not just the first four. |
+| [RemoteTerm for MeshCore (USB Fix)](remoteterm-usb/) | `remoteterm_usb` | Packaging-only fork of [bhaggs/ha-remoteterm-app](https://github.com/bhaggs/ha-remoteterm-app) adding `udev: true` so `/dev/serial/by-id/` paths resolve (upstream now ships `uart: true` itself). |
 | [Bee Backend](bee_backend/) | `bee_backend` | Local backend API bridging Bee wearable data into Home Assistant for the [Bee HA integration](https://github.com/FinestDice17/ha-bee-integration). |
 
 Each add-on's folder has its own `README.md` (background/rationale) and `DOCS.md` (the
